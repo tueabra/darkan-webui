@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block contents %}
+
+    <div class="page-header">
+        <h1>{{ host.hostname }} <small>{{ host.added }}</small></h1>
+    </div>
+
+    <h2>Key</h2>
+
+    <pre>{{ host.key }}</pre>
+
+    <h2>Latest values</h2>
+
+    <table class="table table-bordered table-striped table-condensed">
+        <thead>
+            <tr>
+                <th style="width: 200px;">Key</th>
+                <th style="width: 150px;">Arg</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for value in latest %}
+            <tr>
+                <td>{{ value.key }}</td>
+                <td>{{ value.arg }}</td>
+                <td>{{ value.value }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
